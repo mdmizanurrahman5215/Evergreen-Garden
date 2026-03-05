@@ -1,35 +1,39 @@
 const categoryContainer = document.getElementById("category-container");
 const buttonContainer = document.getElementById("button-container");
 const cardContainer = document.getElementById("card-container");
+const alltrees = document.getElementById("alltrees");
 
 const categoryBtn = (categories) => {
-  //   buttonContainer.innerHTML = "";
+  // buttonContainer.innerHTML = "";
   console.log(categories);
+
   categories.forEach((category) => {
     const button = document.createElement("button");
     button.textContent = category.category_name;
+    button.id = `category-${category.id}`;
     button.classList.add("btn", "btn-soft", "btn-accent");
-    //    `
-    //    <button class="btn btn-soft btn-accent"></button>
-    //    `
+
+    button.addEventListener("click", function () {
+      setActive(button);
+      fetchByCategory(category.id);
+    });
+
     buttonContainer.appendChild(button);
   });
 };
 
 const displayPlants = async (plants) => {
-    console.log(plants);
-    cardContainer.innerHTML = "";
+  console.log(plants);
+  cardContainer.innerHTML = "";
 
-    if(!plants.length){
-     console.log("there has no plants");
-     
-    }
+  if (!plants.length) {
+    console.log("there has no plants");
+  }
 
-
-    plants?.forEach((plant)=>{
-        const {id, image, name, description, category, price} = plant
-      const div = document.createElement("div")
-      div.innerHTML = `
+  plants?.forEach((plant) => {
+    const { id, image, name, description, category, price } = plant;
+    const div = document.createElement("div");
+    div.innerHTML = `
         <div data-id = "${id}" class="card bg-base-100 shadow-sm">
           <figure class="h-48 w-full overflow-hidden">
             <img
@@ -43,18 +47,32 @@ const displayPlants = async (plants) => {
             <p class="line-clamp-2">
              ${description}
             </p>
-            <div class="badge badge-accent">Accent</div>
+            <div class="badge badge-accent">${category}</div>
             <div class="flex gap-4 justify-between">
               <button class="btn btn-primary">${price}</button>
-              <button class="btn btn-primary">Add to card</button>
+              <button onclick= "addToCard(${id}, ${name}, ${category}, ${price})" class="btn btn-primary">Add to card</button>
             </div>
           </div>
         </div>
-      `
-      cardContainer.appendChild(div)
-    })
-    
-  
-
+      `;
+    cardContainer.appendChild(div);
+  });
 };
 
+function setActive(activeBtn) {
+  const buttons = document.querySelectorAll("#button-container button");
+  console.log(buttons);
+
+  buttons.forEach((btn) => {
+    btn.classList.remove("active");
+  });
+  activeBtn.classList.add("active");
+}
+
+alltrees.addEventListener("click", function () {
+  const buttons = document.querySelectorAll("#button-container button");
+  buttons.forEach((btn) => {
+    btn.classList.remove("active");
+  });
+  alltrees.classList.add('active')
+});

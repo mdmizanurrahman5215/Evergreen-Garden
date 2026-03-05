@@ -1,5 +1,9 @@
-
+const loading = document.getElementById("loading")
 const showLoading = () =>{
-    console.log("loading...");
+   loading.classList.remove("hidden")
     
+}
+
+const closeLoading =()=>{
+     loading.classList.add("hidden")
 }
