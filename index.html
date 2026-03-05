@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🌿 EverGreen Garden</title>
+    <!-- tailwind + daisy UI  -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-gray-100 h-screen">
+    <h1 class="text-center text-3xl font-bold pt-10 text-green-500">
+      EverGreen Garden
+    </h1>
+
+    <main class="container mx-auto grid grid-cols-12 gap-4 ">
+      <!-- catergory section  -->
+      <section id="category-container" class="col-span-3  ">
+        <span
+          id="loading"
+          class="loading loading-bars loading-xl hidden"
+        ></span>
+
+        <div id="button-container" class="flex flex-col gap-2">
+          <button onclick="fetchPlants()" class="btn btn-soft btn-accent">All trees</button>
+        </div>
+        <!-- category button will be added dynamically  -->
+      </section>
+
+      <section id="card-container" class="col-span-6  grid grid-cols-1 md:grid-cols-3 gap-4">
+      
+      </section>
+      <section class="col-span-3 ">add to card</section>
+    </main>
+
+    <script src="./script/loading.js"></script>
+    <script src="./script/display.js"></script>
+    <script src="./script/index.js"></script>
+  </body>
+</html>
