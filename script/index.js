@@ -29,7 +29,7 @@ const fetchPlants = async()=>{
 
     const plants = data.plants;
     displayPlants(plants);
-    console.log(plants);
+    // console.log(plants);
   } catch (error) {
     console.log(error);
   } finally {
@@ -48,7 +48,7 @@ const fetchByCategory = async(id)=>{
 
     const plants = data.plants;
     displayPlants(plants);
-    console.log(data);
+    // console.log(data);
   } catch (error) {
     console.log(error);
   } finally {
