@@ -71,6 +71,8 @@ function setActive(activeBtn) {
   activeBtn.classList.add("active");
 }
 
+
+
 alltrees.addEventListener("click", function () {
   const buttons = document.querySelectorAll("#button-container button");
   buttons.forEach((btn) => {
@@ -102,17 +104,23 @@ const displayCart = () => {
              <div class="flex flex-col">
                 <h3 class="text-2xl font-semibold">${name}</h3>
                 <div >
-                    <span>${price}</span> x <span>${count}</span>
+                    <span >${price}</span> x <span>${count}</span>
                 </div>
             </div>
             <div class="flex flex-col">
-                <span class = "cursor-pointer">X</span>
+                <span id = "delete-${cart.id}" class = "cursor-pointer">X</span>
                 <span>${price*count}</span>
             </div>
                
        
     `;
     cartListContainer.appendChild(div);
+
+    const deleteBtn = document.querySelector(`#delete-${cart.id}`)
+    deleteBtn.addEventListener("click", function(){
+       deleteCartItem(cart.id);
+        
+    })
   });
 };
 
@@ -125,6 +133,10 @@ const getTotalPrice = (array)=>{
   totalElem.innerText = `$ ${totalPrice}`
 
   
-//   array.reduce()
-  
+}
+
+const deleteCartItem = (id)=>{
+ cartList = cartList.filter((c)=>c.id !== id)
+ displayCart(cartList)
+ getTotalPrice(cartList)
 }
