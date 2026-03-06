@@ -13,14 +13,14 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
-  <body class="bg-gray-100 h-screen">
-    <h1 class="text-center text-3xl font-bold pt-10 text-green-500">
+  <body class="">
+    <h1 class="text-center text-3xl font-bold py-10 text-green-500">
       EverGreen Garden
     </h1>
 
     <main class="container mx-auto grid grid-cols-12 gap-4">
       <!-- catergory section  -->
-      <section id="category-container" class="col-span-3">
+      <section id="category-container" class="col-span-3 bg-white shadow-md">
         <div id="button-container" class="flex flex-col gap-2">
           <button
             id="alltrees"
@@ -47,12 +47,12 @@
           <span class="loading loading-bars loading-xl text-center"></span>
         </div>
       </section>
-      <section id="cart-container" class="col-span-3 border px-6 py-10">
+      <section id="cart-container" class="col-span-3 bg-white shadow-md px-6 py-10">
         <h1 class="text-3xl font-semibold mb-6">Cart</h1>
 
         <div
           id="cart-list"
-          class="bg-gray-200 flex flex-col px-6  py-6 rounded-md gap-4"
+          class="bg-gray-200 flex flex-col px-6  py-6 rounded-md gap-4 max-h-150 overflow-y-auto"
         >
         <div id="empty-cart" class="text-center mx-auto"> 
             <p>Your cart is empty <br> Add trees to get started</p>

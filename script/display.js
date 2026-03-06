@@ -36,8 +36,8 @@ const displayPlants = async (plants) => {
     const { id, image, name, description, category, price } = plant;
     const div = document.createElement("div");
     div.innerHTML = `
-        <div data-id = "${id}" class="card bg-base-100 shadow-sm">
-          <figure class="h-48 w-full overflow-hidden">
+        <div data-id = "${id}" class="card bg-base-100 shadow-sm ${price > 500 ? " border-b-2 border-red-500": "border-b-2 border-green-500 "}">
+          <figure class="h-48 w-full overflow-hidden cursor-pointer">
             <img
               src="${image}"
               alt="${name}"
@@ -45,13 +45,13 @@ const displayPlants = async (plants) => {
             />
           </figure>
           <div class="card-body">
-            <h2 class="card-title">${name}</h2>
+            <h2 class="card-title cursor-pointer hover:text-green-500">${name}</h2>
             <p class="line-clamp-2">
              ${description}
             </p>
             <div class="badge badge-accent">${category}</div>
             <div class="flex gap-4 justify-between">
-              <button class="btn btn-primary">${price}</button>
+              <button class="btn  ${price > 500 ? " bg-red-500 text-white font-semibold": "btn-primary "} ">${price}</button>
               <button onclick= "addToCard(${id}, '${name}', '${category}', ${price})" class="btn btn-primary">Add to card</button>
             </div>
           </div>
